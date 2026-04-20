@@ -1,0 +1,22 @@
+# built application files
+gen/
+
+# Local configuration
+local.properties
+
+# Android Studio
+.idea/
+.gradle/
+
+# Build files
+/build
+/app/build/
+/app/debug/
+/app/release/
+
+# Native build
+.externalNativeBuild
+
+# Misc
+*.iml
+.DS_Store

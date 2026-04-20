@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ── Appearance & UI ──────────────────────────────────────────── -->
+    <PreferenceCategory android:title="@string/setting_category_appearance">
+
+        <Preference
+            android:key="settings_ui"
+            android:icon="@drawable/icon_image_pref"
+            android:title="@string/setting_title_ui" />
+
+    </PreferenceCategory>
+
+    <!-- ── Browsing ─────────────────────────────────────────────────── -->
+    <PreferenceCategory android:title="@string/setting_category_browsing">
+
+        <Preference
+            android:key="settings_general"
+            android:icon="@drawable/icon_web_pref"
+            android:title="@string/setting_title_browser" />
+
+        <Preference
+            android:key="settings_gesture"
+            android:icon="@drawable/icon_sort_pref"
+            android:title="@string/setting_gestures" />
+
+    </PreferenceCategory>
+
+    <!-- ── Privacy & Security ───────────────────────────────────────── -->
+    <PreferenceCategory android:title="@string/setting_category_privacy_sec">
+
+        <Preference
+            android:key="settings_start"
+            android:icon="@drawable/icon_profile_standard_pref"
+            android:title="@string/setting_title_profiles_privacy" />
+
+        <Preference
+            android:key="settings_filter"
+            android:icon="@drawable/icon_filter_pref"
+            android:title="@string/setting_filter" />
+
+    </PreferenceCategory>
+
+    <!-- ── Data Management ──────────────────────────────────────────── -->
+    <PreferenceCategory android:title="@string/setting_category_data_mgmt">
+
+        <Preference
+            android:key="settings_data"
+            android:icon="@drawable/icon_database_pref"
+            android:title="@string/setting_title_data" />
+
+        <Preference
+            android:key="settings_clear"
+            android:icon="@drawable/icon_delete_pref"
+            android:title="@string/menu_delete" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

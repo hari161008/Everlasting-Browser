@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ── Profiles & Whitelist ──────────────────────────────────────── -->
+    <PreferenceCategory android:title="@string/setting_title_profiles_privacy">
+
+        <Preference
+            android:icon="@drawable/icon_profile_standard_pref"
+            android:key="settings_profile"
+            android:title="@string/setting_title_profiles_standard" />
+
+        <Preference
+            android:icon="@drawable/icon_menu_save_pref"
+            android:key="edit_standard"
+            android:title="@string/setting_title_savedWebSites" />
+
+        <CheckBoxPreference
+            android:title="@string/setting_title_clipboard_record"
+            android:icon="@drawable/icon_clipboard_pref"
+            android:defaultValue="false"
+            android:key="sp_clipboard_record" />
+
+    </PreferenceCategory>
+
+    <!-- ── Ad Blocking ──────────────────────────────────────────────── -->
+    <PreferenceCategory android:title="@string/setting_title_adblock">
+
+        <Preference
+            android:key="sp_ad_block"
+            android:summary="@string/setting_summary_adblock" />
+
+        <ListPreference
+            android:defaultValue="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+            android:entries="@array/setting_entries_adBlock"
+            android:entryValues="@array/setting_values_adBlock"
+            android:key="ab_hosts"
+            android:title="@string/setting_title_adblockHost" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/setting_title_profiles_Security">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/icon_java_pref"
+            android:key="profileStandard_javascript"
+            android:summary="@string/setting_title_javascript" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:icon="@drawable/icon_popup_pref"
+            android:key="profileStandard_javascriptPopUp"
+            android:summary="@string/setting_title_javascript_popUp" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:icon="@drawable/icon_location_pref"
+            android:key="profileStandard_location"
+            android:summary="@string/setting_title_location" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:icon="@drawable/icon_camera_pref"
+            android:key="profileStandard_camera"
+            android:summary="@string/setting_title_camera" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:icon="@drawable/icon_microphone_pref"
+            android:key="profileStandard_microphone"
+            android:summary="@string/setting_title_microphone" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/setting_title_profiles_privacy">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/icon_history_pref"
+            android:key="profileStandard_saveHistory"
+            android:summary="@string/album_title_history" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/icon_cookie_pref"
+            android:key="profileStandard_cookies"
+            android:summary="@string/setting_title_cookie" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:icon="@drawable/icon_cookie_pref"
+            android:key="profileStandard_cookiesThirdParty"
+            android:summary="@string/setting_title_cookie_thirdParty" />
+
+        <CheckBoxPreference
+            android:key="profileStandard_deny_cookie_banners"
+            android:icon="@drawable/icon_cookie_pref"
+            android:summary="@string/setting_title_deny_cookie_banners"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/icon_dom_pref"
+            android:key="profileStandard_dom"
+            android:summary="@string/setting_title_dom" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/icon_adblock_pref"
+            android:key="profileStandard_adBlock"
+            android:summary="@string/setting_title_adblock" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/icon_fingerprint_pref"
+            android:key="profileStandard_fingerPrintProtection"
+            android:summary="@string/setting_title_fingerPrint" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:icon="@drawable/icon_tracking_pref"
+            android:key="profileStandard_trackingULS"
+            android:summary="@string/setting_title_trackingURL" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/setting_title_profiles_dataUsage">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/icon_image_pref"
+            android:key="profileStandard_images"
+            android:summary="@string/setting_title_images" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/icon_savedata_pref"
+            android:key="profileStandard_saveData"
+            android:summary="@string/setting_title_save_data" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/setting_title_ui">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/icon_night_pref"
+            android:key="profileStandard_night"
+            android:summary="@string/menu_nightView" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:icon="@drawable/icon_desktop_pref"
+            android:key="profileStandard_desktop"
+            android:summary="@string/menu_desktopView" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

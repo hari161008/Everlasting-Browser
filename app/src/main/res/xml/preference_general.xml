@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- ── General Browser Options ──────────────────────────────────── -->
+    <PreferenceCategory android:title="@string/setting_category_browsing">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="sp_drm"
+            android:summary="@string/hint_DRM_Media" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="sp_autofill"
+            android:summary="@string/setting_summary_autofill" />
+
+        <EditTextPreference
+            android:defaultValue="https://www.google.com"
+            android:key="favoriteURL"
+            android:icon="@drawable/icon_fav_pref"
+            android:title="@string/setting_title_fav" />
+
+        <EditTextPreference
+            android:defaultValue=""
+            android:key="urlForPosting"
+            android:icon="@drawable/icon_post_pref"
+            android:title="@string/dialog_postOnWebsite"
+            android:summary="@string/dialog_postOnWebsiteHint" />
+
+        <de.baumann.browser.preferences.EditTextSwitchPreference
+            android:key="sp_userAgent"
+            android:icon="@drawable/icon_desktop_pref"
+            android:selectable="true"
+            android:title="@string/setting_title_userAgent"
+            app:editTextSwitchKey="userAgentSwitch"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <!-- ── Search Engine ────────────────────────────────────────────── -->
+    <PreferenceCategory android:title="@string/setting_title_search_engine">
+
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/setting_entries_search_engine"
+            android:entryValues="@array/setting_values_search_engine"
+            android:key="sp_search_engine"
+            android:title="@string/setting_title_search_engine" />
+
+        <de.baumann.browser.preferences.EditTextSwitchPreference
+            android:key="sp_search_engine_custom"
+            android:selectable="true"
+            android:title="@string/setting_title_searchEngine"
+            app:editTextSwitchKey="searchEngineSwitch"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <!-- ── User Scripts ──────────────────────────────────────────────── -->
+    <PreferenceCategory android:title="@string/setting_userScript">
+
+        <de.baumann.browser.preferences.EditTextSwitchPreference
+            android:key="sp_onPageStarted"
+            android:selectable="true"
+            android:title="onPageStarted"
+            app:editTextSwitchKey="onPageStarted"
+            app:useSimpleSummaryProvider="true" />
+
+        <de.baumann.browser.preferences.EditTextSwitchPreference
+            android:key="sp_onPageFinished"
+            android:selectable="true"
+            android:title="onPageFinished"
+            app:editTextSwitchKey="onPageFinished"
+            app:useSimpleSummaryProvider="true" />
+
+        <de.baumann.browser.preferences.EditTextSwitchPreference
+            android:key="sp_onLoadResource"
+            android:selectable="true"
+            android:title="onLoadResource"
+            app:editTextSwitchKey="onLoadResource"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

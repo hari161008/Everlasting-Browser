@@ -1,0 +1,1099 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:animateLayoutChanges="true"
+    tools:ignore="ContentDescription">
+
+    <!-- ── Drag handle ──────────────────────────────────────────────── -->
+    <View
+        android:layout_width="32dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/drag_handle_shape"
+        android:backgroundTint="?attr/colorOutlineVariant" />
+
+    <!-- ── Expressive header card ───────────────────────────────────── -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/albumCardView"
+        style="@style/Widget.Material3.CardView.Filled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="?attr/colorPrimaryContainer">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp">
+
+            <!-- Favicon container -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView"
+                style="@style/Widget.Material3.CardView.Filled"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="@android:color/transparent"
+                app:cardCornerRadius="14dp">
+
+                <ImageView
+                    android:id="@+id/menu_icon"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:scaleType="fitCenter"
+                    tools:ignore="ContentDescription" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/textGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="6dp"
+                android:layout_toStartOf="@+id/buttonProfile"
+                android:layout_toEndOf="@id/cardView"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/textGroup_menuTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:textAppearance="?attr/textAppearanceTitleSmall"
+                    android:textColor="?attr/colorOnPrimaryContainer" />
+
+                <TextView
+                    android:id="@+id/textGroup_menuURL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:textAppearance="?attr/textAppearanceLabelSmall"
+                    android:textColor="?attr/colorOnPrimaryContainer"
+                    android:alpha="0.75" />
+
+            </LinearLayout>
+
+            <!-- Profile button -->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/buttonProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:backgroundTint="?attr/colorSecondaryContainer"
+                app:tint="?attr/colorOnSecondaryContainer"
+                app:fabCustomSize="44dp"
+                app:maxImageSize="20dp"
+                app:elevation="0dp"
+                app:borderWidth="0dp"
+                android:src="@drawable/icon_profile_standard" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ── Quick-action icon strip ─────────────────────────────────── -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="?attr/colorSurfaceContainerHigh">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/ib_save"
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:icon="@drawable/icon_menu_save" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/menu_fav"
+                    android:textAppearance="?attr/textAppearanceLabelSmall"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_delete_wrap"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/ib_delete"
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:icon="@drawable/icon_delete" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/menu_delete"
+                    android:textAppearance="?attr/textAppearanceLabelSmall"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/ib_reload"
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:icon="@drawable/icon_refresh" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/menu_reload"
+                    android:textAppearance="?attr/textAppearanceLabelSmall"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/ib_settings"
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:icon="@drawable/icon_settings" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/setting_title_browser"
+                    android:textAppearance="?attr/textAppearanceLabelSmall"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/button_help"
+                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    app:icon="@drawable/icon_help" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/app_help"
+                    android:textAppearance="?attr/textAppearanceLabelSmall"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ── Reset-to-standard toggle ─────────────────────────────────── -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="?attr/colorSurfaceContainerHigh">
+
+        <RelativeLayout
+            android:id="@+id/checkbox_reset"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="12dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@+id/icon_standard"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:text="@string/setting_title_profiles_standard_always" />
+
+            <ImageView
+                android:id="@+id/icon_standard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_popup"
+                android:layout_marginEnd="4dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                app:tint="?attr/colorOnSurfaceVariant"
+                tools:ignore="ContentDescription" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ── Scrollable profile settings ──────────────────────────────── -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="0dp">
+
+            <!-- ═══ SECURITY card ═══════════════════════════════════════ -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Filled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHigh">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Section header band -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:background="?attr/colorTertiaryContainer">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/setting_title_profiles_Security"
+                            android:textAppearance="?attr/textAppearanceLabelLarge"
+                            android:textColor="?attr/colorOnTertiaryContainer"
+                            android:letterSpacing="0.05" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/icon_lock"
+                            app:tint="?attr/colorOnTertiaryContainer"
+                            tools:ignore="ContentDescription" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="8dp">
+
+                        <!-- JavaScript -->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorTertiaryContainer">
+                                <ImageView android:id="@+id/icon_java"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_java"
+                                    android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnTertiaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_java"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_java"
+                                android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl"
+                                android:paddingStart="12dp"
+                                android:text="@string/setting_title_javascript" />
+                        </RelativeLayout>
+
+                        <!-- JS Pop-ups -->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorTertiaryContainer">
+                                <ImageView android:id="@+id/icon_javaPopUp"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_popup"
+                                    android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnTertiaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_javaPopUp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_javaPopUp"
+                                android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl"
+                                android:paddingStart="12dp"
+                                android:text="@string/setting_title_javascript_popUp" />
+                        </RelativeLayout>
+
+                        <!-- Location -->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorTertiaryContainer">
+                                <ImageView android:id="@+id/icon_location"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_location"
+                                    android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnTertiaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_location"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_location"
+                                android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl"
+                                android:paddingStart="12dp"
+                                android:text="@string/setting_title_location" />
+                        </RelativeLayout>
+
+                        <!-- Camera -->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorTertiaryContainer">
+                                <ImageView android:id="@+id/icon_camera"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_camera"
+                                    android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnTertiaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_camera"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_camera"
+                                android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl"
+                                android:paddingStart="12dp"
+                                android:text="@string/setting_title_camera" />
+                        </RelativeLayout>
+
+                        <!-- Microphone -->
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorTertiaryContainer">
+                                <ImageView android:id="@+id/icon_mic"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_microphone"
+                                    android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnTertiaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_mic"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_mic"
+                                android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl"
+                                android:paddingStart="12dp"
+                                android:text="@string/setting_title_microphone" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ═══ PRIVACY card ════════════════════════════════════════ -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Filled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHigh">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Section header band -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:background="?attr/colorSecondaryContainer">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/setting_title_profiles_privacy"
+                            android:textAppearance="?attr/textAppearanceLabelLarge"
+                            android:textColor="?attr/colorOnSecondaryContainer"
+                            android:letterSpacing="0.05" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/icon_fingerprint"
+                            app:tint="?attr/colorOnSecondaryContainer"
+                            tools:ignore="ContentDescription" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="8dp">
+
+                        <!-- History -->
+                        <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:layout_alignParentStart="true" android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp" app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorSecondaryContainer">
+                                <ImageView android:id="@+id/icon_history"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_history" android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnSecondaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_history"
+                                android:layout_width="wrap_content" android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_history" android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl" android:paddingStart="12dp"
+                                android:text="@string/album_title_history" />
+                        </RelativeLayout>
+
+                        <!-- Cookies -->
+                        <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:layout_alignParentStart="true" android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp" app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorSecondaryContainer">
+                                <ImageView android:id="@+id/icon_cookies"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_cookie" android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnSecondaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_cookies"
+                                android:layout_width="wrap_content" android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_cookies" android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl" android:paddingStart="12dp"
+                                android:text="@string/setting_title_cookie" />
+                        </RelativeLayout>
+
+                        <!-- Third-party cookies -->
+                        <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:layout_alignParentStart="true" android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp" app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorSecondaryContainer">
+                                <ImageView android:id="@+id/icon_cookiesThirdParty"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_cookie" android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnSecondaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_cookiesThirdParty"
+                                android:layout_width="wrap_content" android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_cookiesThirdParty" android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl" android:paddingStart="12dp"
+                                android:text="@string/setting_title_cookie_thirdParty" />
+                        </RelativeLayout>
+
+                        <!-- Cookie banners -->
+                        <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:layout_alignParentStart="true" android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp" app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorSecondaryContainer">
+                                <ImageView android:id="@+id/icon_cookiesBanner"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_cookie" android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnSecondaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_cookiesBanner"
+                                android:layout_width="wrap_content" android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_cookiesBanner" android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl" android:paddingStart="12dp"
+                                android:text="@string/setting_title_deny_cookie_banners" />
+                        </RelativeLayout>
+
+                        <!-- DOM -->
+                        <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:layout_alignParentStart="true" android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp" app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorSecondaryContainer">
+                                <ImageView android:id="@+id/icon_dom"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_dom" android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnSecondaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_dom"
+                                android:layout_width="wrap_content" android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_dom" android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl" android:paddingStart="12dp"
+                                android:text="@string/setting_title_dom" />
+                        </RelativeLayout>
+
+                        <!-- AdBlock -->
+                        <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:layout_alignParentStart="true" android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp" app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorSecondaryContainer">
+                                <ImageView android:id="@+id/icon_adBlock"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_adblock" android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnSecondaryContainer"
+                                    tools:ignore="ContentDescription,TooManyViews" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_adBlock"
+                                android:layout_width="wrap_content" android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_adBlock" android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl" android:paddingStart="12dp"
+                                android:text="@string/setting_title_adblock" />
+                        </RelativeLayout>
+
+                        <!-- Fingerprint -->
+                        <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:layout_alignParentStart="true" android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp" app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorSecondaryContainer">
+                                <ImageView android:id="@+id/icon_fingerPrint"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_fingerprint" android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnSecondaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_fingerPrint"
+                                android:layout_width="wrap_content" android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_fingerPrint" android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl" android:paddingStart="12dp"
+                                android:text="@string/setting_title_fingerPrint" />
+                        </RelativeLayout>
+
+                        <!-- Tracking URL -->
+                        <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:layout_alignParentStart="true" android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp" app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorSecondaryContainer">
+                                <ImageView android:id="@+id/icon_trackingURL"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_tracking" android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnSecondaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_trackingURL"
+                                android:layout_width="wrap_content" android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_trackingURL" android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl" android:paddingStart="12dp"
+                                android:text="@string/setting_title_trackingURL" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ═══ DATA USAGE card ══════════════════════════════════════ -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Filled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHigh">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Section header band -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:background="?attr/colorPrimaryContainer">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/setting_title_profiles_dataUsage"
+                            android:textAppearance="?attr/textAppearanceLabelLarge"
+                            android:textColor="?attr/colorOnPrimaryContainer"
+                            android:letterSpacing="0.05" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/icon_savedata"
+                            app:tint="?attr/colorOnPrimaryContainer"
+                            tools:ignore="ContentDescription" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="8dp">
+
+                        <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:layout_alignParentStart="true" android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp" app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorPrimaryContainer">
+                                <ImageView android:id="@+id/icon_image"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_image" android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnPrimaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_image"
+                                android:layout_width="wrap_content" android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_image" android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl" android:paddingStart="12dp"
+                                android:text="@string/setting_title_images" />
+                        </RelativeLayout>
+
+                        <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:layout_alignParentStart="true" android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp" app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorPrimaryContainer">
+                                <ImageView android:id="@+id/icon_saveData"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_savedata" android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnPrimaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_saveData"
+                                android:layout_width="wrap_content" android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_saveData" android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl" android:paddingStart="12dp"
+                                android:text="@string/setting_title_save_data" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ═══ UI card ══════════════════════════════════════════════ -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Filled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHigh">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Section header band -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:background="?attr/colorTertiaryContainer">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/setting_title_ui"
+                            android:textAppearance="?attr/textAppearanceLabelLarge"
+                            android:textColor="?attr/colorOnTertiaryContainer"
+                            android:letterSpacing="0.05" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/icon_night"
+                            app:tint="?attr/colorOnTertiaryContainer"
+                            tools:ignore="ContentDescription" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="8dp">
+
+                        <RelativeLayout android:id="@+id/layout_nightView"
+                            android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:layout_alignParentStart="true" android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp" app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorTertiaryContainer">
+                                <ImageView android:id="@+id/icon_nightView"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_night" android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnTertiaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_nightView"
+                                android:layout_width="wrap_content" android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_nightView" android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl" android:paddingStart="12dp"
+                                android:text="@string/menu_nightView" />
+                        </RelativeLayout>
+
+                        <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="32dp" android:layout_height="32dp"
+                                android:layout_alignParentStart="true" android:layout_centerVertical="true"
+                                app:cardCornerRadius="10dp" app:cardElevation="0dp"
+                                app:cardBackgroundColor="?attr/colorTertiaryContainer">
+                                <ImageView android:id="@+id/icon_desktop"
+                                    android:layout_width="18dp" android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/icon_desktop" android:scaleType="fitCenter"
+                                    app:tint="?attr/colorOnTertiaryContainer"
+                                    tools:ignore="ContentDescription" />
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.materialswitch.MaterialSwitch
+                                android:id="@+id/checkbox_desktop"
+                                android:layout_width="wrap_content" android:layout_height="match_parent"
+                                android:layout_toEndOf="@id/icon_desktop" android:layout_alignParentEnd="true"
+                                android:layoutDirection="rtl" android:paddingStart="12dp"
+                                android:text="@string/menu_desktopView" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ═══ EXTRAS card ══════════════════════════════════════════ -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Filled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHigh">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!-- Section header band -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:background="?attr/colorSecondaryContainer">
+
+                        <TextView
+                            android:id="@+id/titeViewSettings"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textAppearance="?attr/textAppearanceLabelLarge"
+                            android:textColor="?attr/colorOnSecondaryContainer"
+                            android:letterSpacing="0.05" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/icon_settings"
+                            app:tint="?attr/colorOnSecondaryContainer"
+                            tools:ignore="ContentDescription" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="8dp">
+
+                        <com.google.android.material.materialswitch.MaterialSwitch
+                            android:id="@+id/checkbox_screenOn"
+                            android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                            android:layoutDirection="rtl"
+                            android:paddingEnd="4dp"
+                            android:text="@string/setting_title_screenOn" />
+
+                        <com.google.android.material.materialswitch.MaterialSwitch
+                            android:id="@+id/checkbox_links"
+                            android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                            android:layoutDirection="rtl"
+                            android:paddingEnd="4dp"
+                            android:text="@string/dialog_backGround"
+                            tools:ignore="TooManyViews" />
+
+                        <!-- Redirect row -->
+                        <RelativeLayout
+                            android:id="@+id/checkbox_redirectLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="?android:attr/listPreferredItemHeightSmall">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginEnd="8dp"
+                                android:layoutDirection="rtl"
+                                android:text="@string/privacy_redirect_use"
+                                android:layout_toStartOf="@+id/checkbox_redirect"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+                            <Button
+                                style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+                                android:id="@+id/checkbox_redirect"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="0dp"
+                                app:icon="@drawable/icon_redirect" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

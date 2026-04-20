@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editTopLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_toStartOf="@+id/buttonsLayout"
+        android:gravity="center_vertical">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchBox_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:imeOptions="actionDone" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/searchBox_cancel"
+            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            android:backgroundTint="?attr/colorSurfaceContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/icon_close" />
+
+        <Button
+            android:id="@+id/searchBox_down"
+            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            android:backgroundTint="?attr/colorSurfaceContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/icon_down" />
+
+        <Button
+            android:id="@+id/searchBox_up"
+            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            android:backgroundTint="?attr/colorSurfaceContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/icon_up" />
+
+    </LinearLayout>
+
+</RelativeLayout>
